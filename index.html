@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="description"
+        content="STAR: Sparse Tactile Representation Learning in Vision–Tactile–Language–Action Models for Dexterous Manipulation">
+  <meta name="keywords"
+        content="STAR, Dexterous Manipulation, Tactile Representation Learning, Vision-Tactile-Language-Action">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>STAR | Sparse Tactile Representation Learning</title>
+
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-FV4ZJ9PVSV"></script>  
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-FV4ZJ9PVSV');
+  </script>
+
+  <script>
+
+    function updateInteractive() {
+      var task = document.getElementById("interative-menu").value;
+
+      console.log("interactive", task)
+
+      // if task does not contain the string "towel"
+      if (task.indexOf("towel") == -1) {
+        var video = document.getElementById("interactive-video");
+        video.src = "media/videos/" + 
+                    task + 
+                    ".mp4"
+        video.play();
+
+        var html = document.getElementById("interactive-html-1");
+        html.src = "media/interactive/" + 
+                    task + 
+                    ".html"
+
+        // hide the second iframe container
+        var iframeContainer2 = document.getElementById("second-iframe-container");
+        iframeContainer2.style.display = "none";
+      } else {
+        var video = document.getElementById("interactive-video");
+        video.src = "media/videos/hang-towel.mp4"
+        video.play();
+
+        var html1 = document.getElementById("interactive-html-1");
+        html1.src = "media/interactive/hang-towel-1.html"
+
+        // show and set the source for the second iframe
+        var html2 = document.getElementById("interactive-html-2");
+        html2.src = "media/interactive/hang-towel-2.html"
+
+        // show the second iframe container
+        var iframeContainer2 = document.getElementById("second-iframe-container");
+        iframeContainer2.style.display = "block";
+      }
+    }
+
+
+
+  </script>
+
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
+        rel="stylesheet">
+
+  <link rel="stylesheet" href="./static/css/bulma.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+  <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="./static/css/index.css">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script defer src="./static/js/fontawesome.all.min.js"></script>
+  <script src="./static/js/bulma-carousel.min.js"></script>
+  <script src="./static/js/bulma-slider.min.js"></script>
+  <script src="./static/js/index.js"></script>
+</head>
+<body onload="updateInteractive();">
+
+<section class="hero">
+  <div class="hero-body">
+    <div class="container is-fullhd">
+      <div class="columns is-centered">
+        <div class="column has-text-centered">
+          <h1 class="title is-1 publication-title">STAR: Sparse Tactile Representation Learning in Vision–Tactile–Language–Action Models for Dexterous Manipulation
+</h1>
+          <!-- <h3 class="title is-4 conference-authors"><a target="_blank" href="https://2025.ieee-icra.org/">ICRA 2025</a></h3> -->
+          <div class="is-size-5 publication-authors">
+            <span class="author-block">Anonymous Authors</span>
+          </div>
+
+          <div class="column has-text-centered">
+            <div class="publication-links">
+            <!-- Video Link. -->
+            <span class="link-block">
+              <a target="_blank" href="media/mp4/anonymous.mp4"
+                 class="external-link button is-normal is-rounded is-dark">
+                <span class="icon">
+                    <i class="fab fa-youtube"></i>
+                </span>
+                <span>Video</span>
+              </a>
+            </span>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="hero teaser">
+  <div class="container is-fullhd">
+    <div class="hero-body">
+      <div class="container">
+        <div class="columns is-vcentered  is-centered">
+          <video
+            controls
+            autoplay
+            muted
+            loop
+            playsinline
+            preload="metadata"
+            poster="main.jpg"
+            style="width: 100%; height: auto;">
+            <source src="media/mp4/anonymous.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+          </video>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section summary-section">
+  <div class="container is-max-widescreen">
+    <!-- Abstract. -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-full">
+        <h2 class="title is-3">Summary</h2>
+        <div class="content has-text-justified summary-text">
+          <p>
+            Dexterous manipulation requires coordinated multi-finger control and effective tactile feedback, yet learning these capabilities remains challenging due to the lack of large-scale real-world data and the difficulty of extracting effective representations from sparse tactile signals. We build a robot platform and teleoperation system to collect a 200-hour bimanual dexterous manipulation dataset with synchronized visual, tactile, and language annotations, comprising 10,576 trajectories across 65 tasks, 69.5% of which involve dexterous multi-finger manipulation. We further propose STAR, an integrated training recipe for vision–tactile–language–action (VTLA) models that addresses the spatial, temporal, and informational sparsity of tactile signals through visual–tactile joint pre-training, sparse-global tactile token representation, and sparse future tactile prediction. Trained on this dataset, STAR achieves a 61% average success rate across four real-world tasks with 100 post-training trajectories per task, demonstrating dexterous performance under task-specific post-training.
+          </p>
+        </div>
+        <h2 class="title is-3 method-title">Overview</h2>
+        <figure class="summary-figure teaser-figure">
+          <img
+            src="main.jpg"
+            alt="STAR overview of dataset, sparse tactile learning, and policy rollout">
+          <figcaption>
+            <strong>Overview.</strong>
+            Our training recipe, applied to a 200-hour self-collected dexterous hand dataset with tactile inputs, systematically addresses spatial, temporal, and informational sparsity, enabling dexterous performance across diverse post-training manipulation tasks.
+          </figcaption>
+        </figure>
+        <h2 class="title is-3 method-title">Method</h2>
+        <figure class="summary-pipeline">
+          <img loading="lazy" src="media/figures/pipeline-v2.png"
+            alt="STAR training pipeline">
+          <figcaption>
+            <strong>Training Recipe.</strong>
+            a) We jointly predict the masked tokens of RGB and tactile images for both intra- and inter-modal tactile pre-training.
+            b) We construct the sparse-global tactile token representation for policy training by retaining activated spatial tactile tokens and per-hand global tactile tokens.
+            c) During policy pre-training, we add sparse future tactile prediction to model informative future contact dynamics.
+          </figcaption>
+        </figure>
+        <!-- <figure class="summary-baseline">
+          <img loading="lazy" src="media/figures/baseline_vis_tactile/baseline.gif"
+            alt="Visual-tactile manipulation policy baseline comparison">
+        </figure> -->
+        <h2 class="title is-3 method-title">Evaluation Setup</h2>
+        <figure class="summary-figure eval-setup-figure">
+          <img loading="lazy" src="media/figures/eval_setup.png"
+            alt="STAR evaluation setup">
+        </figure>
+      </div>
+    </div>
+    <!--/ Abstract. -->
+  </div>
+</section>
+
+<section class="section results-section">
+  <div class="container is-max-widescreen">
+
+    <div class="rows">
+      
+      <!-- <p class="content has-text-justified">
+        Our policy can generalize to most of the unseen objects that have varying color, geometry and dynamics.
+      </p> -->
+
+      <h2 class="title is-3 has-text-centered">Comparison of Different Manipulation Policies</h2>
+      <h3 class="title is-4">Earbud-flipping</h3>
+      <div class="columns gif-comparison">
+        <div class="column has-text-centered">
+          <div class="comparison-label">Ours</div>
+          <img loading="lazy" src="media/figures/earbud-flipping-gif/gif/Ours.gif" class="interpolation-image"/>
+          <p style="text-align:center">
+          </p>
+        </div>
+        <div class="column has-text-centered">
+          <div class="comparison-label">&pi;0.5</div>
+          <img loading="lazy" src="media/figures/earbud-flipping-gif/gif/pi0.5.gif" class="interpolation-image"/>
+          <p style="text-align:center">
+          </p>
+        </div>
+        <div class="column has-text-centered">
+          <div class="comparison-label">LDA-1B</div>
+          <img loading="lazy" src="media/figures/earbud-flipping-gif/gif/LDA-1B.gif" class="interpolation-image"/>
+          <p style="text-align:center">
+          </p>
+        </div>
+        <div class="column has-text-centered">
+          <div class="comparison-label">GR00T N1.7</div>
+          <img loading="lazy" src="media/figures/earbud-flipping-gif/gif/GROOT%20N1.7.gif" class="interpolation-image"/>
+          <p style="text-align:center">
+          </p>
+        </div>
+      </div>
+
+      <h3 class="title is-4">Stacked-book retrieval</h3>
+      <div class="columns gif-comparison">
+        <div class="column has-text-centered">
+          <div class="comparison-label">Ours</div>
+          <img loading="lazy" src="media/figures/book-gif/gif/Ours.gif" class="interpolation-image"/>
+          <p style="text-align:center">
+          </p>
+        </div>
+        <div class="column has-text-centered">
+          <div class="comparison-label">&pi;0.5</div>
+          <img loading="lazy" src="media/figures/book-gif/gif/pi0.5.gif" class="interpolation-image"/>
+          <p style="text-align:center">
+          </p>
+        </div>
+        <div class="column has-text-centered">
+          <div class="comparison-label">LDA-1B</div>
+          <img loading="lazy" src="media/figures/book-gif/gif/LDA-1B.gif" class="interpolation-image"/>
+          <p style="text-align:center">
+          </p>
+        </div>
+        <div class="column has-text-centered">
+          <div class="comparison-label">GR00T N1.7</div>
+          <img loading="lazy" src="media/figures/book-gif/gif/GROOT%20N1.7.gif" class="interpolation-image"/>
+          <p style="text-align:center">
+          </p>
+        </div>
+      </div>
+      <h3 class="title is-4">Postcard retrieval</h3>
+      <div class="columns gif-comparison">
+        <div class="column has-text-centered">
+          <div class="comparison-label">Ours</div>
+          <img loading="lazy" src="media/figures/postcard-gif/gif/Ours-76.gif" class="interpolation-image"/>
+          <p style="text-align:center">
+          </p>
+        </div>
+        <div class="column has-text-centered">
+          <div class="comparison-label">&pi;0.5</div>
+          <img loading="lazy" src="media/figures/postcard-gif/gif/pi0.5.gif" class="interpolation-image"/>
+          <p style="text-align:center">
+          </p>
+        </div>
+        <div class="column has-text-centered">
+          <div class="comparison-label">LDA-1B</div>
+          <img loading="lazy" src="media/figures/postcard-gif/gif/LDA-1B.gif" class="interpolation-image"/>
+          <p style="text-align:center">
+          </p>
+        </div>
+        <div class="column has-text-centered">
+          <div class="comparison-label">GR00T N1.7</div>
+          <img loading="lazy" src="media/figures/postcard-gif/gif/GROOT%20N1.7.gif" class="interpolation-image"/>
+          <p style="text-align:center">
+          </p>
+        </div>
+      </div>
+
+      <h3 class="title is-4">Multi-object grasping</h3>
+      <div class="columns gif-comparison">
+        <div class="column has-text-centered">
+          <div class="comparison-label">Ours</div>
+          <img loading="lazy" src="media/figures/multi-grasp-gif/gif/Ours.gif" class="interpolation-image"/>
+          <p style="text-align:center">
+          </p>
+        </div>
+        <div class="column has-text-centered">
+          <div class="comparison-label">&pi;0.5</div>
+          <img loading="lazy" src="media/figures/multi-grasp-gif/gif/pi0.5.gif" class="interpolation-image"/>
+          <p style="text-align:center">
+          </p>
+        </div>
+        <div class="column has-text-centered">
+          <div class="comparison-label">LDA-1B</div>
+          <img loading="lazy" src="media/figures/multi-grasp-gif/gif/LDA-1B.gif" class="interpolation-image"/>
+          <p style="text-align:center">
+          </p>
+        </div>
+        <div class="column has-text-centered">
+          <div class="comparison-label">GR00T N1.7</div>
+          <img loading="lazy" src="media/figures/multi-grasp-gif/gif/GROOT%20N1.7.gif" class="interpolation-image"/>
+          <p style="text-align:center">
+          </p>
+        </div>
+      </div>
+
+      <h2 class="title is-3 has-text-centered tactile-vis-title">Ours Rollout with Tactile Visualization</h2>
+      <div class="columns gif-comparison tactile-vis-comparison">
+        <div class="column is-half">
+          <h3 class="title is-4">Earbud-flipping</h3>
+          <div class="columns gif-comparison">
+            <div class="column has-text-centered">
+              <img loading="lazy" src="media/figures/earbud-flipping-gif/gif/ear1.gif" class="interpolation-image"/>
+            </div>
+            <div class="column has-text-centered">
+              <img loading="lazy" src="media/figures/earbud-flipping-gif/gif/ear2.gif" class="interpolation-image"/>
+            </div>
+          </div>
+        </div>
+        <div class="column is-half">
+          <h3 class="title is-4">Stacked-book retrieval</h3>
+          <div class="columns gif-comparison">
+            <div class="column has-text-centered">
+              <img loading="lazy" src="media/figures/book-gif/gif/book1.gif" class="interpolation-image"/>
+            </div>
+            <div class="column has-text-centered">
+              <img loading="lazy" src="media/figures/book-gif/gif/book2.gif" class="interpolation-image"/>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="columns gif-comparison tactile-vis-comparison">
+        <div class="column is-half">
+          <h3 class="title is-4">Postcard retrieval</h3>
+          <div class="columns gif-comparison">
+            <div class="column has-text-centered">
+              <img loading="lazy" src="media/figures/postcard-gif/gif/card2.gif" class="interpolation-image"/>
+            </div>
+            <div class="column has-text-centered">
+              <img loading="lazy" src="media/figures/postcard-gif/gif/card1.gif" class="interpolation-image"/>
+            </div>
+          </div>
+        </div>
+        <div class="column is-half">
+          <h3 class="title is-4">Multi-object grasping</h3>
+          <div class="columns gif-comparison">
+            <div class="column has-text-centered">
+              <img loading="lazy" src="media/figures/multi-grasp-gif/gif/multi1.gif" class="interpolation-image"/>
+            </div>
+            <div class="column has-text-centered">
+              <img loading="lazy" src="media/figures/multi-grasp-gif/gif/multi2.gif" class="interpolation-image"/>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+</section>
+
+</body>
+</html>
